@@ -740,9 +740,9 @@ def maybe_freeze_encoder(cfg, model: nn.Module, *, epoch_idx_0based: int) -> boo
                     continue
                 p.requires_grad = True
             
-            # 3) Keep fusion modules trainable (nằm ngoài encoder)
-            # Các modules này đã tự động trainable vì không thuộc base_encoder
-            # Nhưng cần đảm bảo chúng ở train mode
+            # 3) Keep fusion modules trainable (outside the encoder)
+            # These modules are already trainable because they are not in base_encoder
+            # But we still need to ensure they are in train mode
             for name, module in model.named_modules():
                 if name.startswith("encoder.base_encoder"):
                     continue

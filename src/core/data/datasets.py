@@ -977,12 +977,12 @@ class _SubsetAspectSentimentDataset(Dataset):
 
 class AspectSentimentDatasetKFold(Dataset):
     """
-    Full-train dataset with sentence-level K-fold split (phân rã KFoldConfig).
+    Full-train dataset with sentence-level K-fold split (KFoldConfig decomposition).
 
     Parameters:
-        k_folds: số fold, ví dụ 5
-        seed: seed dùng cho shuffle sentence
-        shuffle: có shuffle sentence indices trước khi chia fold hay không
+        k_folds: number of folds, e.g., 5
+        seed: seed used for sentence shuffling
+        shuffle: whether to shuffle sentence indices before splitting into folds
 
     Usage:
         base = AspectSentimentDatasetKFold(

@@ -10,11 +10,11 @@ from src.core.data.datasets import AspectSentimentDataset, AspectSentimentDatase
 
 def get_model(cfg):
     """
-    Chuẩn chỉnh:
-    - cfg.mode chọn class trong src.models
-    - Không fallback (không cfg.base/cfg.moe/cfg.kfold)
-    - kwargs chỉ lấy theo signature __init__
-    - Báo lỗi rõ nếu thiếu required args
+    Standard behavior:
+    - cfg.mode selects the class in src.models
+    - No fallback (no cfg.base/cfg.moe/cfg.kfold)
+    - kwargs are selected only from the __init__ signature
+    - Raise a clear error if required args are missing
     """
     from src.core.run.model_factory import build_model
 

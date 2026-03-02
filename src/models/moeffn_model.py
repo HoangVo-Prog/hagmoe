@@ -92,10 +92,10 @@ class MoE(nn.Module):
             mask_flat = token_mask.reshape(-1).to(dtype=torch.bool)  # [N]
             active_idx = torch.nonzero(mask_flat, as_tuple=False).squeeze(-1)  # [Na]
 
-            # Nếu batch hiếm khi toàn pad (Na == 0) thì bypass MoE, trả về residual+LN
+            # If a rare batch is fully padded (Na == 0), bypass MoE and return residual + LN
             if active_idx.numel() == 0:
                 out = self.layer_norm(hidden_states + 0.0)
-                # cache empty để aux loss không crash
+                # Keep empty cache so auxiliary loss computation does not crash
                 self.last_router_logits = logits[:0]
                 self.last_topk_idx = torch.empty((0, self.moe_top_k), device=logits.device, dtype=torch.long)
                 return out
