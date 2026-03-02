@@ -22,11 +22,14 @@ Hierarchical Aspect-Guided Mixture-of-Experts (HAGMoE) for aspect-based sentimen
 ## Repository structure
 
 ```text
-hagmoe/
-|-- data/                    # ABSA datasets (Lap14, Rest14, Rest15, Rest16)
-|-- images/                  # Figures used in this README
-|-- requirements.txt
-`-- README.md
+├── README.md
+├── data # datasets 
+├── images
+├── requirements.txt
+├── scripts
+└── src
+    ├── core # core logic
+    └── models # model implements
 ```
 
 ## Requirements
@@ -41,27 +44,6 @@ Install Python dependencies:
 pip install -r requirements.txt
 ```
 
-## Setup
-
-1. Create and activate a virtual environment.
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
-
-On Windows PowerShell:
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-```
-
-2. Install dependencies.
-
-```bash
-pip install -r requirements.txt
-```
 
 
 ## Run training
